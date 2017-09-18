@@ -105,8 +105,7 @@ public class MainDelfiTest {
 
         //Entering every title and comparing titleText and titleCounts with subTitleText and subTitleCount! (=2nd level)
         //And entering more lower level(comment page) and comparing subSubTitleCommentCount and titleCommentCount
-        for (int i=0; i<2 ; i++) {
-        //for (int i=0; i<titles.size() ; i++) {
+        for (int i=0; i<5 ; i++) { //for (int i=0; i<titles.size() ; i++) {
             driver.get(hrefIDs.get(i));
             WebElement element = driver.findElement(SUB_ARTICLE);
             //WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(SUB_ARTICLE));
@@ -191,8 +190,7 @@ public class MainDelfiTest {
 
         //Entering every title and comparing titleText and titleCounts with subTitleText and subTitleCount! (=2nd level)
         //And entering more lower level(comment page) and comparing subSubTitleCommentCount and titleCommentCount
-        for (int i=0; i<2 ; i++) {
-            //for (int i=0; i<titles.size() ; i++) {
+        for (int i=0; i<5 ; i++) { //for (int i=0; i<mobTitles.size() ; i++) {
             mobileDriver.get(mobHrefIDs.get(i));
             WebElement element = mobileDriver.findElement(MOB_SUB_ARTICLE);
             //WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(SUB_ARTICLE));
