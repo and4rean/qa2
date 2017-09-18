@@ -20,7 +20,7 @@ import java.util.List;
  *
  * */
 
-public class MainDelfiTest {
+public class MainDelfiTestOld {
 
     private String driverName = "Chrome";
     private String driverType = "webdriver.chrome.driver";
@@ -36,7 +36,7 @@ public class MainDelfiTest {
 
 
     @Test
-    public void delfiTestAS() throws InterruptedException {
+    public void delfiTestASOLD() throws InterruptedException {
         /*
         //Firefox browser
         System.setProperty("webdriver.gecko.driver", "C:/geckodriver.exe");
