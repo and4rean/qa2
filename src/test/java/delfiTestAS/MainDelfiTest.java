@@ -28,7 +28,7 @@ public class MainDelfiTest {
     private String startPage = "http://delfi.lv";   private String mobileStartPage = "http://m.delfi.lv";
 
 
-    //full version
+    //full version LOCATORS
     private static final By ARTICLES = By.xpath(".//h3[@class='top2012-title']");//By.partialLinkText("Viesuļvētra 'Irma'"); //By.xpath(".//lalal");
     private static final By ARTICLE_TITLES = By.xpath(".//*[@class='top2012-title']");
     private static final By ARTICLE_COUNTS = By.xpath(".//*[@class='comment-count']");
@@ -41,7 +41,7 @@ public class MainDelfiTest {
     private static final By SUB2_ANON_ARTICLE_COUNT = By.xpath(".//*[@class='comment-thread-switcher-list-a comment-thread-switcher-list-a-anon']"); //anonymous comments!
 
 
-    //mobile version
+    //mobile version LOCATORS
     private static final By MOB_ARTICLES = By.xpath(".//*[@class='md-mosaic-title']");//By.xpath(".//*[@class='md-scrollpos']");
     private static final By MOB_ARTICLE_TITLES = By.xpath(".//*[@class='md-scrollpos']");
     private static final By MOB_ARTICLE_COUNTS = By.xpath(".//*[@class='commentCount']");
