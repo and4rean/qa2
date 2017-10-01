@@ -1,5 +1,7 @@
 package delfiTestAS;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -26,6 +28,8 @@ public class MainDelfiTest {
     private String driverType = "webdriver.chrome.driver";
     private String driverLocation = "C:/chromedriver.exe";
     private String startPage = "http://delfi.lv";   private String mobileStartPage = "http://m.delfi.lv";
+
+    private static final Logger LOGGER = LogManager.getLogger(MainDelfiTest.class);
 
 
     //full version LOCATORS
