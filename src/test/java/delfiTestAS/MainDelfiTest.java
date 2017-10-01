@@ -63,6 +63,7 @@ public class MainDelfiTest {
     public void delfiTestAS() throws InterruptedException {
 
         //Chrome Driver
+        LOGGER.info("Initializing //Chrome Driver");
         System.setProperty(driverType, driverLocation); //System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
 
         WebDriver driver = new ChromeDriver();
@@ -78,6 +79,7 @@ public class MainDelfiTest {
 
 
         //1. F-U-L-L DELFI VERSION!
+        LOGGER.info("//1. F-U-L-L DELFI VERSION!");
         WebDriverWait wait = new WebDriverWait(driver, 6); // wait variable - if we will need to wait for element
         List<WebElement> articleList = driver.findElements(ARTICLES); //List<WebElement> articleList = driver.findElements(By.xpath(".//*[@class='top2012-title']"));//xpath(".//class"));
 
@@ -110,6 +112,7 @@ public class MainDelfiTest {
 
         //Entering every title and comparing titleText and titleCounts with subTitleText and subTitleCount! (=2nd level)
         //And entering more lower level(comment page) and comparing subSubTitleCommentCount and titleCommentCount
+        LOGGER.info("//Entering every title and comparing titleText and titleCounts with subTitleText and subTitleCount! (=2nd level)");
         for (int i=0; i<titles.size(); i++) { //for (int i=0; i<5 ; i++) { //for (int i=0; i<titles.size() ; i++) {
             driver.get(hrefIDs.get(i));
             WebElement element = driver.findElement(SUB_ARTICLE);
@@ -117,6 +120,7 @@ public class MainDelfiTest {
             //driver.close(); //System.out.println(element.getText());
 
             //extracting article name
+
             String subTitle = element.findElement(SUB_ARTICLE_TITLE).getText();
 
             //extracting comment count
@@ -160,6 +164,7 @@ public class MainDelfiTest {
 
 
         //2. M-O-B-I-L-E DELFI VERSION!
+        LOGGER.info("//2. M-O-B-I-L-E DELFI VERSION!");
         WebDriverWait mobWait = new WebDriverWait(mobileDriver, 6); // wait variable - if we will need to wait for element
         List<WebElement> mobArticleList = mobileDriver.findElements(MOB_ARTICLES); //List<WebElement> articleList = driver.findElements(By.xpath(".//*[@class='top2012-title']"));//xpath(".//class"));
 
@@ -168,6 +173,7 @@ public class MainDelfiTest {
         ArrayList<String> mobHrefIDs = new ArrayList<String>();
 
         //taking 5 first articles = Dima-boss ordered :) and extracting titleNameText, titleCommentCount, titleLinkHref and adding it to 3 lists
+        LOGGER.info("//mobile= taking 5 first articles = Dima-boss ordered :) and extracting titleNameText, titleCommentCount, titleLinkHref and adding it to 3 lists");
         for (int i=0; i<5; i++) {
             WebElement element = mobArticleList.get(i);
 
@@ -195,6 +201,7 @@ public class MainDelfiTest {
 
         //Entering every title and comparing titleText and titleCounts with subTitleText and subTitleCount! (=2nd level)
         //And entering more lower level(comment page) and comparing subSubTitleCommentCount and titleCommentCount
+        LOGGER.info("//mobile= Entering every title and comparing titleText and titleCounts with subTitleText and subTitleCount! (=2nd level)");
         for (int i=0; i<mobTitles.size(); i++) { //for (int i=0; i<5 ; i++) { //for (int i=0; i<mobTitles.size() ; i++) {
             mobileDriver.get(mobHrefIDs.get(i));
             WebElement element = mobileDriver.findElement(MOB_SUB_ARTICLE);
@@ -248,6 +255,7 @@ public class MainDelfiTest {
 
 
         //3. Compare F-U-L-L and M-O-B-I-L-E  titles + counts!
+        LOGGER.info("//3. Compare F-U-L-L and M-O-B-I-L-E  titles + counts!");
         for (int i=0; i<titles.size(); i++){
             Assert.assertEquals("Not Equal mobTitle and title Nr="+i,titles.get(i), mobTitles.get(i));
             Assert.assertEquals("Not Equal mobCount and count Nr="+i,counts.get(i), mobCounts.get(i));
@@ -269,6 +277,7 @@ public class MainDelfiTest {
 
 
         //Thread.sleep(1000);
+        LOGGER.info("//quitting full drivers and mobile driver!");
         driver.quit();
         mobileDriver.quit();
         //ctrl-D or shift-shift or shift-alt=up or down

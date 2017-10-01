@@ -1,5 +1,7 @@
 package delfiTestAS;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -22,13 +24,16 @@ import java.util.List;
 
 public class MainDelfiTest2Custom {
 
-    private String searchTitleName = "Vesela krava sadauzītu";//"Piektās kategorijas viesuļvētra";//"Lietuvieši cīnīsies par atbalstu";//"LOSP aicina sienu"; //"Lietuvieši cīnīsies par atbalstu";///"LOSP aicina sienu un salmus ruļļos nepārdot ārpus Latvijas (9)";
+    private String searchTitleName = "Katalonijas referenduma";//"Piektās kategorijas viesuļvētra";//"Lietuvieši cīnīsies par atbalstu";//"LOSP aicina sienu"; //"Lietuvieši cīnīsies par atbalstu";///"LOSP aicina sienu un salmus ruļļos nepārdot ārpus Latvijas (9)";
 
     private String driverName = "Chrome";
     private String driverType = "webdriver.chrome.driver";
     private String driverLocation = "C:/chromedriver.exe";
     private String startPage = "http://delfi.lv";
     private String mobileStartPage = "http://m.delfi.lv";
+
+    private static final Logger LOGGER = LogManager.getLogger(MainDelfiTest.class);
+
 
 
     //full version LOCATORS
@@ -81,6 +86,7 @@ public class MainDelfiTest2Custom {
 
 
         //1. F-U-L-L DELFI VERSION!
+        LOGGER.info("//1. F-U-L-L DELFI VERSION!");
         WebDriverWait wait = new WebDriverWait(driver, 6); // wait variable - if we will need to wait for element
         List<WebElement> articleList = driver.findElements(ARTICLES); //List<WebElement> articleList = driver.findElements(By.xpath(".//*[@class='top2012-title']"));//xpath(".//class"));
 
@@ -96,7 +102,7 @@ public class MainDelfiTest2Custom {
 
         //taking 5 first articles = Dima-boss ordered :) and extracting titleNameText, titleCommentCount, titleLinkHref and adding it to 3 lists
         //while (!breakLoop) //breakLoop = true; //if (i == articleList.size() - 1) breakLoop = true;
-
+        LOGGER.info("//finding desired index of title name in the mainList of articles!");
         for (int i = 0; i < articleList.size(); i++) {
             WebElement element = articleList.get(i);
 
@@ -130,7 +136,7 @@ public class MainDelfiTest2Custom {
         } else
             System.out.println("F-U-L-L---Article search:" + searchTitleName + " =found with Index=NO RESULT! :( -");
 
-
+        LOGGER.info("if desired search title found - begin Assertion(compare) process...");
         Integer subCount = -1;
         if (foundIndex >= 0) {
             driver.get(hrefIDs.get(0));
@@ -180,6 +186,7 @@ public class MainDelfiTest2Custom {
 
 
         //2. M-O-B-I-L-E DELFI VERSION!
+        LOGGER.info("//2. M-O-B-I-L-E DELFI VERSION!");
         WebDriverWait mobileWait = new WebDriverWait(mobileDriver, 6); // wait variable - if we will need to wait for element
         List<WebElement> mobArticleList = mobileDriver.findElements(MOB_ARTICLES); //List<WebElement> articleList = driver.findElements(By.xpath(".//*[@class='top2012-title']"));//xpath(".//class"));
 
@@ -195,7 +202,7 @@ public class MainDelfiTest2Custom {
 
         //taking 5 first articles = Dima-boss ordered :) and extracting titleNameText, titleCommentCount, titleLinkHref and adding it to 3 lists
         //while (!breakLoop) //breakLoop = true; //if (i == articleList.size() - 1) breakLoop = true;
-
+        LOGGER.info("//mobile= finding desired index of title name in the mainList of articles!");
         for (int i = 0; i < mobArticleList.size(); i++) {
             WebElement element = mobArticleList.get(i);
 
@@ -229,7 +236,7 @@ public class MainDelfiTest2Custom {
         } else
             System.out.println("M-O-B-I-L-E---Article search:" + searchTitleName + " =found with Index=NO RESULT! :( -");
 
-
+        LOGGER.info("mobile= if desired search title found - begin Assertion(compare) process...");
         Integer mobSubCount = -1;
         if (mobFoundIndex >= 0) {
             mobileDriver.get(mobHrefIDs.get(0));
@@ -276,8 +283,9 @@ public class MainDelfiTest2Custom {
 
 
         //3. Compare F-U-L-L and M-O-B-I-L-E  found title + count!
-            Assert.assertEquals("Not Equal title Nr="+foundIndex + " and mobTitle MobNr="+mobFoundIndex,titles.get(0), mobTitles.get(0));//index(0)-because we have only 1 value of found Article (just using List like a string :) )
-            Assert.assertEquals("Not Equal count Nr="+foundIndex + " and mobCount MobNr="+mobFoundIndex,counts.get(0), mobCounts.get(0));//index(0)-because we have only 1 value of found Article (just using List like a string :) )
+        LOGGER.info("//3. Compare F-U-L-L and M-O-B-I-L-E  found title + count!");
+        Assert.assertEquals("Not Equal title Nr="+foundIndex + " and mobTitle MobNr="+mobFoundIndex,titles.get(0), mobTitles.get(0));//index(0)-because we have only 1 value of found Article (just using List like a string :) )
+        Assert.assertEquals("Not Equal count Nr="+foundIndex + " and mobCount MobNr="+mobFoundIndex,counts.get(0), mobCounts.get(0));//index(0)-because we have only 1 value of found Article (just using List like a string :) )
 
 
 
