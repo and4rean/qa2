@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainDelfiTest2Custom {
 
-    private String searchTitleName = "Piektās kategorijas viesuļvētra";//"Lietuvieši cīnīsies par atbalstu";//"LOSP aicina sienu"; //"Lietuvieši cīnīsies par atbalstu";///"LOSP aicina sienu un salmus ruļļos nepārdot ārpus Latvijas (9)";
+    private String searchTitleName = "Vesela krava sadauzītu";//"Piektās kategorijas viesuļvētra";//"Lietuvieši cīnīsies par atbalstu";//"LOSP aicina sienu"; //"Lietuvieši cīnīsies par atbalstu";///"LOSP aicina sienu un salmus ruļļos nepārdot ārpus Latvijas (9)";
 
     private String driverName = "Chrome";
     private String driverType = "webdriver.chrome.driver";

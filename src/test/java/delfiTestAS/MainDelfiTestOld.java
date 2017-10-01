@@ -66,6 +66,7 @@ public class MainDelfiTestOld {
         //driver.findElement(DELFI_1_ARTICLE_NAME); //driver.findElement(DELFI_1_ARTICLE_NAME).click();
 
         List<WebElement> titles = driver.findElements(By.xpath(".//h3[@class='top2012-title']"));//xpath(".//class"));
+        //List<WebElement> titles = driver.findElements(By.xpath(".//h3/a[@class='top2012-title']"));//xpath(".//class"));
         //List<WebElement> titles = driver.findElements(By.xpath(".//*[@class='top2012-title']"));//xpath(".//class"));
         //List<WebElement> titles = driver.findElements(By.className("top2012-title"));//xpath(".//class"));
 
@@ -77,7 +78,7 @@ public class MainDelfiTestOld {
         //driver.findElement(By.partialLinkText("Video: Aizputē un")).click();
 
 
-        List<WebElement> mobileTitles = mobileDriver.findElements(By.xpath(".//*[@class='md-scrollpos']"));//xpath(".//class"));
+        List<WebElement> mobileTitles = mobileDriver.findElements(By.xpath(".//*[@class='md-mosaic-title']"));//xpath(".//class"));
         List<WebElement> mobileCounts = mobileDriver.findElements(By.xpath(".//*[@class='commentCount']"));//xpath(".//class"));
 
 
