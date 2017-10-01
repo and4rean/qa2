@@ -86,6 +86,7 @@ public class MainDelfiTest {
         ArrayList<String> hrefIDs = new ArrayList<String>();
 
         //taking 5 first articles = Dima-boss ordered :) and extracting titleNameText, titleCommentCount, titleLinkHref and adding it to 3 lists
+        LOGGER.info("//taking 5 first articles = Dima-boss ordered :) and extracting titleNameText, titleCommentCount, titleLinkHref and adding it to 3 lists");
         for (int i=0; i<5; i++) {
             WebElement element = articleList.get(i);
 
