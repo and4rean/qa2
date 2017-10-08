@@ -37,9 +37,10 @@ public class HomePage {
         return Integer.valueOf(count);
     }
 
-    public void openArticle() {
+    public ArticlePage openArticle() {
         LOGGER.info("Click title");
         baseFunc.clickElement(ARTICLE_TITLE);
+        return new ArticlePage(baseFunc);
     }
 
 

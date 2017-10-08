@@ -1,5 +1,6 @@
 package delfiPageObjectTestAS;
 
+import delfiPageObjectTestAS.Pages.ArticlePage;
 import delfiPageObjectTestAS.Pages.BaseFunctions;
 import delfiPageObjectTestAS.Pages.HomePage;
 import delfiTestAS.MainDelfiTest;
@@ -28,10 +29,9 @@ public class PageObjectTest {
         int count = homePage.getCommentCount(article);
 
         LOGGER.info("Open fist article");
-        homePage.openArticle();
+        ArticlePage articlePage = homePage.openArticle();
 
         LOGGER.info("Getting article title");
-
 
         LOGGER.info("Getting article comment count");
         LOGGER.info("Comparing title");

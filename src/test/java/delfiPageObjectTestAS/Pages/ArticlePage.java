@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
 public class ArticlePage {
+
     BaseFunctions baseFunc;
     private static final Logger LOGGER = LogManager.getLogger(ArticlePage.class);
 
