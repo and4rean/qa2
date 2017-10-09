@@ -1,6 +1,6 @@
 package delfiPageObjectTestAS.Pages;
 
-import delfiPageObjectTestAS.PageObjectTest;
+import delfiPageObjectTestAS.PageObjectTestAS;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -12,7 +12,6 @@ public class BaseFunctions {
     WebDriver driver;
     private String driverType = "webdriver.chrome.driver";
     private String driverLocation = "C:/chromedriver.exe";
-    private String startPage = "http://delfi.lv";   private String mobileStartPage = "http://m.delfi.lv";
 
     private static final Logger LOGGER = LogManager.getLogger(BaseFunctions.class);
 
@@ -22,7 +21,7 @@ public class BaseFunctions {
         LOGGER.info("Setting system properties");
         System.setProperty(driverType, driverLocation); //System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
 
-        LOGGER.info("Starting FireFox driver");
+        LOGGER.info("Starting Chrome driver");
         this.driver = new ChromeDriver();
 
         LOGGER.info("Maximize browser window");

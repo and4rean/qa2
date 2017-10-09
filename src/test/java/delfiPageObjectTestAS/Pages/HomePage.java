@@ -11,8 +11,8 @@ public class HomePage {
     private static final Logger LOGGER = LogManager.getLogger(HomePage.class);
 
     private static final By ARTICLES = By.xpath(".//h3[@class='top2012-title']");
-    private static final By ARTICLE_TITLE = By.xpath(".//*[@class='top2012-title']");
-    private static final By ARTICLE_COUNT = By.xpath(".//*[@class='comment-count']");
+    private static final By ARTICLE_TITLE = By.xpath(".//a[@class='top2012-title']"); //By.xpath(".//h3/a");
+    private static final By ARTICLE_COUNT = By.xpath(".//a[@class='comment-count']");
 
 
 
@@ -20,25 +20,25 @@ public class HomePage {
         this.baseFunc = bs; //"this" to use variable from (line 10) NOT CREATING NEW ONE!
     }
 
-    public WebElement getFirstArticle() {
-        LOGGER.info("Getting first article on homepage");
+    public WebElement getArticle() {
+        //LOGGER.info("Getting article on homepage");
         return baseFunc.getElement(ARTICLES);
     }
 
     public String getTitle(WebElement article) {
-        LOGGER.info("Getting title");
+        //LOGGER.info("Getting title");
         return baseFunc.getElement(ARTICLE_TITLE).getText();
     }
 
     public int getCommentCount(WebElement article) {
-        LOGGER.info("Getting comment count");
+        //LOGGER.info("Getting comment count");
         String countText = baseFunc.getElement(ARTICLE_COUNT).getText();
         String count = countText.substring(countText.indexOf("(")+1, countText.indexOf(")"));
         return Integer.valueOf(count);
     }
 
     public ArticlePage openArticle() {
-        LOGGER.info("Click title");
+        //LOGGER.info("Click title");
         baseFunc.clickElement(ARTICLE_TITLE);
         return new ArticlePage(baseFunc);
     }
