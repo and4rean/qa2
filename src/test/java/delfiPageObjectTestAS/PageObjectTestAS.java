@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 
 public class PageObjectTestAS {
 
-    //BaseFunctions baseFunc = new BaseFunctions();
+    BaseFunctions baseFunc = new BaseFunctions();
     BaseFunctions baseFuncMOB = new BaseFunctions();
 
     private static final Logger LOGGER = LogManager.getLogger(PageObjectTestAS.class);
@@ -20,11 +20,18 @@ public class PageObjectTestAS {
     @Test
     public void delfiPageObjectTestAS() {
 
-
-/*
         //LOGGER.info("Open home page");
         baseFunc.goToURL(HOME_PAGE_URL);
 
+        //LOGGER.info("Open MOB home page");
+        baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
+
+
+
+
+
+
+// /*
         //LOGGER.info("Getting article title");
         HomePage homePage = new HomePage(baseFunc);
         WebElement article = homePage.getArticle();
@@ -80,15 +87,15 @@ public class PageObjectTestAS {
 
         //LOGGER.info("Comparing comment count and comment sub2Count");
         Assert.assertEquals("Not Equal Count and sub2Count Nr=", count, sub2TotCount);
-*/
+
+        //LOGGER.info("Quit driver!");
+        baseFunc.quitDriver();
+// */
 
 
 
 
 
-
-        //LOGGER.info("Open MOB home page");
-        baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
 
         //LOGGER.info("Getting MOB article title");
         HomePageMOB homePageMOB = new HomePageMOB(baseFuncMOB);
@@ -146,21 +153,25 @@ public class PageObjectTestAS {
         //LOGGER.info("Comparing MOB comment count and MOB comment sub2Count");
         Assert.assertEquals("Not Equal MOB Count and MOB sub2Count Nr=", countMOB, sub2TotCountMOB);
 
+        //LOGGER.info("Quit MOB driver!");
+        baseFuncMOB.quitDriver();
 
 
-/*
+
         //LOGGER.info("Comparing title and MOB title");
         Assert.assertEquals("Not Equal title and MOB title Nr=", title, titleMOB);
 
         //LOGGER.info("Comparing comment count and MOB comment count");
         Assert.assertEquals("Not Equal Count and MOB Count Nr=", count, countMOB);
-*/
 
 
 
 
 
-        //LOGGER.info("Test is successfull");
+
+        LOGGER.info("!!");
+        LOGGER.info("!!");
+        LOGGER.info("Tests ARE SUCCESSFULL!");
 
 
     }

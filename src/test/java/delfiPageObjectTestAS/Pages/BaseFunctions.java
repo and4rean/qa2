@@ -43,5 +43,10 @@ public class BaseFunctions {
         driver.findElement(locator).click();
     }
 
+    public void quitDriver() {
+        LOGGER.info("Quit driver");
+        driver.quit();
+    }
+
 }
 
