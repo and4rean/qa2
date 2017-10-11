@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.List;
+
 public class BaseFunctions {
     WebDriver driver;
     private String driverType = "webdriver.chrome.driver";
@@ -36,6 +38,11 @@ public class BaseFunctions {
     public WebElement getElement(By locator) { //METHOD!!
         LOGGER.info("Getting element");
         return driver.findElement(locator);
+    }
+
+    public List<WebElement> getElements(By locator) { //METHOD!!
+        LOGGER.info("Getting element");
+        return driver.findElements(locator);
     }
 
     public void clickElement(By locator) {

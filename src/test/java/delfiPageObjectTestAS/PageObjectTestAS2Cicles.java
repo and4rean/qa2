@@ -8,12 +8,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 
-public class PageObjectTestAS {
+public class PageObjectTestAS2Cicles {
 
     BaseFunctions baseFunc = new BaseFunctions();
     BaseFunctions baseFuncMOB = new BaseFunctions();
 
-    private static final Logger LOGGER = LogManager.getLogger(PageObjectTestAS.class);
+    private static final Logger LOGGER = LogManager.getLogger(PageObjectTestAS2Cicles.class);
     private static final String HOME_PAGE_URL = "http://delfi.lv";
     private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
 
@@ -30,7 +30,7 @@ public class PageObjectTestAS {
 
 
 
-
+        
 
 // /*
         //LOGGER.info("Getting article title");

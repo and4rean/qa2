@@ -31,9 +31,15 @@ public class HomePageMOB {
 
     public int getCommentCount(WebElement article) {
         //LOGGER.info("Getting MOB comment count");
-        String countText = baseFunc.getElement(MOB_ARTICLE_COUNT).getText();
-        String count = countText.substring(countText.indexOf("(")+1, countText.indexOf(")"));
-        return Integer.valueOf(count);
+        int countReady;
+        if (baseFunc.getElements(MOB_ARTICLE_COUNT).size() > 0) {
+            String countText = baseFunc.getElement(MOB_ARTICLE_COUNT).getText(); //must be exmpl. (101)
+            String count = countText.substring(countText.indexOf("(")+1, countText.indexOf(")")); //must be exmpl. 101
+            countReady = Integer.valueOf(count);
+        } else
+            countReady = 0;
+
+        return countReady;
     }
 
     public ArticlePageMOB openArticle() {

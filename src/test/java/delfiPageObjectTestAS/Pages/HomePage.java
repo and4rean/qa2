@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class HomePage {
 
     BaseFunctions baseFunc;
@@ -25,6 +27,11 @@ public class HomePage {
         return baseFunc.getElement(ARTICLES);
     }
 
+    public List<WebElement> getArticles() {
+        //LOGGER.info("Getting article on homepage");
+        return baseFunc.getElements(ARTICLES);
+    }
+
     public String getTitle(WebElement article) {
         //LOGGER.info("Getting title");
         return baseFunc.getElement(ARTICLE_TITLE).getText();
@@ -32,9 +39,15 @@ public class HomePage {
 
     public int getCommentCount(WebElement article) {
         //LOGGER.info("Getting comment count");
-        String countText = baseFunc.getElement(ARTICLE_COUNT).getText();
-        String count = countText.substring(countText.indexOf("(")+1, countText.indexOf(")"));
-        return Integer.valueOf(count);
+        int countReady;
+        if (baseFunc.getElements(ARTICLE_COUNT).size() > 0) {
+            String countText = baseFunc.getElement(ARTICLE_COUNT).getText(); //must be exmpl. (101)
+            String count = countText.substring(countText.indexOf("(")+1, countText.indexOf(")")); //must be exmpl. 101
+            countReady = Integer.valueOf(count);
+        } else
+            countReady = 0;
+
+        return countReady;
     }
 
     public ArticlePage openArticle() {

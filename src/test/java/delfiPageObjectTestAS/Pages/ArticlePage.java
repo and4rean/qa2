@@ -31,11 +31,16 @@ public class ArticlePage {
 
     public int getSUBCommentCount(WebElement article) {
         //LOGGER.info("Getting subComment count");
-        String countText = baseFunc.getElement(SUB_ARTICLE_COUNT).getText();
-        String count = countText.substring(countText.indexOf("(") + 1, countText.indexOf(")"));
-        return Integer.valueOf(count);
-    }
+        int countReady;
+        if (baseFunc.getElements(SUB_ARTICLE_COUNT).size() > 0) {
+            String countText = baseFunc.getElement(SUB_ARTICLE_COUNT).getText();
+            String count = countText.substring(countText.indexOf("(") + 1, countText.indexOf(")"));
+            countReady = Integer.valueOf(count);
+        } else
+            countReady = 0;
 
+        return countReady;
+    }
 
     public CommentPage openCommentPage() {
         //LOGGER.info("Click title");
