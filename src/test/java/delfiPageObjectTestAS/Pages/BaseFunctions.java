@@ -40,14 +40,27 @@ public class BaseFunctions {
         return driver.findElement(locator);
     }
 
-    public List<WebElement> getElements(By locator) { //METHOD!!
+    public WebElement getElementByID(By locator, int i) { //METHOD!!
         LOGGER.info("Getting element");
+        List<WebElement> articlesFromDriver = driver.findElements(locator);
+        return articlesFromDriver.get(i);
+    }
+
+    public List<WebElement> getElements(By locator) { //METHOD!!
+        LOGGER.info("Getting elements");
         return driver.findElements(locator);
     }
 
     public void clickElement(By locator) {
         LOGGER.info("Click title");
         driver.findElement(locator).click();
+    }
+
+    public void clickElementByID(By locator, int i) {
+        LOGGER.info("Click title");
+        //driver.findElement(locator).click();
+        List<WebElement> articlesFromDriver = driver.findElements(locator);
+        articlesFromDriver.get(i).click();
     }
 
     public void quitDriver() {

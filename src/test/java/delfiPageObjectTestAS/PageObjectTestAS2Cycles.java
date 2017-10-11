@@ -10,12 +10,12 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class PageObjectTestAS2Cicles {
+public class PageObjectTestAS2Cycles {
 
-//    BaseFunctions baseFunc = new BaseFunctions();
+    BaseFunctions baseFunc = new BaseFunctions();
     BaseFunctions baseFuncMOB = new BaseFunctions();
 
-    private static final Logger LOGGER = LogManager.getLogger(PageObjectTestAS2Cicles.class);
+    private static final Logger LOGGER = LogManager.getLogger(PageObjectTestAS2Cycles.class);
     private static final String HOME_PAGE_URL = "http://delfi.lv";
     private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
 
@@ -23,14 +23,14 @@ public class PageObjectTestAS2Cicles {
     public void delfiPageObjectTestAS() {
 
         //LOGGER.info("Open home page");
-//        baseFunc.goToURL(HOME_PAGE_URL);
+        baseFunc.goToURL(HOME_PAGE_URL);
 
         //LOGGER.info("Open MOB home page");
         baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
 
-        int start = 1; int stop = 3;
+        int start = 1; int stop = 2;
 
-/*
+// /*
 
         //LOGGER.info("Getting CUSTOM articleList and extracting titles and counts");
         HomePage homePage = new HomePage(baseFunc);
@@ -123,7 +123,7 @@ public class PageObjectTestAS2Cicles {
 
         //LOGGER.info("Quit driver!");
         baseFunc.quitDriver();
-*/
+// */
 
 
 
