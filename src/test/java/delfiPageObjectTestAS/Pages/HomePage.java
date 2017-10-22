@@ -1,12 +1,19 @@
 package delfiPageObjectTestAS.Pages;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import delfiPageObjectTestAS.Wrappers.ArticleWrapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.common.base.Optional;
+import java.util.stream.Collectors;
 
 public class HomePage {
 
@@ -16,6 +23,8 @@ public class HomePage {
     private static final By ARTICLES = By.xpath(".//h3[@class='top2012-title']"); //By.xpath(".//a[@class='top2012-title']"); //By.xpath(".//h3[@class='top2012-title']"); //By.xpath(".//*[@class='top2012-title']");
     private static final By ARTICLE_TITLE = By.xpath(".//a[@class='top2012-title']"); //By.xpath(".//h3/a");
     private static final By ARTICLE_COUNT = By.xpath(".//a[@class='comment-count']");
+
+    private static final By ARTICLE_ITEM = By.xpath("???? aaa ???? .//a[@class='comment-count']");
 
 
 
@@ -93,6 +102,28 @@ public class HomePage {
         return new ArticlePage(baseFunc);
     }
 
+    private List<ArticleWrapper> getAllArticles() {
+        List<WebElement> articles = baseFunc.getElements(ARTICLE_ITEM);
+        List<ArticleWrapper> articleWrappers = new ArrayList<>();
+
+        Iterables.addAll(articleWrappers,
+                articles.stream()
+                        .map(webElement -> new ArticleWrapper(baseFunc, webElement))
+                        .collect(Collectors.toList()));
+        return articleWrappers;
+    }
+
+    private ArticleWrapper getArticleByTitle(String name) { // private == because we use it only locally here in this class
+        Optional<ArticleWrapper> wrapper = Iterables.tryFind(getAllArticles(),
+                articleWrapper -> name.equals(articleWrapper.getArticleTitle())); // articleWrapper -> articleWrapper.getArticleTitle().contains(name));
+        return wrapper.isPresent() ? wrapper.get() : null;
+    }
+
+    public ArticlePage openArticleByTitle(String articleName) {
+        //LOGGER.info("Click title");
+        getArticleByTitle(articleName);
+        return new ArticlePage(baseFunc);
+    }
 
 
 }
