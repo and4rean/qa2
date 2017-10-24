@@ -24,7 +24,7 @@ public class HomePage {
     private static final By ARTICLE_TITLE = By.xpath(".//a[@class='top2012-title']"); //By.xpath(".//h3/a");
     private static final By ARTICLE_COUNT = By.xpath(".//a[@class='comment-count']");
 
-    private static final By ARTICLE_ITEM = By.xpath("???? aaa ???? .//a[@class='comment-count']");
+    //private static final By ARTICLE_ITEM = By.xpath(".//h3[@class='top2012-title']");
 
 
 
@@ -103,7 +103,7 @@ public class HomePage {
     }
 
     private List<ArticleWrapper> getAllArticles() {
-        List<WebElement> articles = baseFunc.getElements(ARTICLE_ITEM);
+        List<WebElement> articles = baseFunc.getElements(ARTICLES);
         List<ArticleWrapper> articleWrappers = new ArrayList<>();
 
         Iterables.addAll(articleWrappers,
@@ -113,15 +113,33 @@ public class HomePage {
         return articleWrappers;
     }
 
-    private ArticleWrapper getArticleByTitle(String name) { // private == because we use it only locally here in this class
+    private ArticleWrapper getArticleByTitle(String searchName) { // private == because we use it only locally here in this class
         Optional<ArticleWrapper> wrapper = Iterables.tryFind(getAllArticles(),
-                articleWrapper -> name.equals(articleWrapper.getArticleTitle())); // articleWrapper -> articleWrapper.getArticleTitle().contains(name));
+                articleWrapper -> articleWrapper.getArticleTitle().contains(searchName)); //name.equals(articleWrapper.getArticleTitle())); // articleWrapper -> articleWrapper.getArticleTitle().contains(name));
         return wrapper.isPresent() ? wrapper.get() : null;
     }
 
-    public ArticlePage openArticleByTitle(String articleName) {
-        //LOGGER.info("Click title");
-        getArticleByTitle(articleName);
+
+    public String getArticleTitleNameAS(String searchName) {
+        //LOGGER.info("Get Article Title Name");
+        ArticleWrapper artWrap = getArticleByTitle(searchName);
+
+        return artWrap.getArticleTitle();
+    }
+
+    public int getArticleCommentCountAS(String searchName) {
+        //LOGGER.info("Get Article Comment Count");
+        ArticleWrapper artWrap = getArticleByTitle(searchName);
+
+        return artWrap.getArticleCommentCount();
+    }
+
+
+    public ArticlePage openArticleByTitle(String searchName) {
+        //LOGGER.info("Open Article By Title");
+        ArticleWrapper artWrap = getArticleByTitle(searchName);
+        artWrap.clickOnTitle();
+
         return new ArticlePage(baseFunc);
     }
 

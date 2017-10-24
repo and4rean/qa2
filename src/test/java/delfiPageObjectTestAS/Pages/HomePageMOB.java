@@ -88,7 +88,7 @@ public class HomePageMOB {
     }
 
     public ArticlePageMOB openArticleByID(int i) {
-        //LOGGER.info("Click title");
+        //LOGGER.info("Click MOB title");
         baseFunc.clickElementByID(MOB_ARTICLE_TITLE, i);
         return new ArticlePageMOB(baseFunc);
     }
