@@ -1,12 +1,18 @@
 package delfiPageObjectTestAS.Pages;
 
+import com.google.common.base.Optional;
+import com.google.common.collect.Iterables;
+import delfiPageObjectTestAS.Wrappers.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.common.base.Optional;
+import java.util.stream.Collectors;
 
 public class HomePageMOB {
 
@@ -90,6 +96,47 @@ public class HomePageMOB {
     public ArticlePageMOB openArticleByID(int i) {
         //LOGGER.info("Click MOB title");
         baseFunc.clickElementByID(MOB_ARTICLE_TITLE, i);
+        return new ArticlePageMOB(baseFunc);
+    }
+
+    private List<ArticleWrapperMOB> getAllArticles() {
+        List<WebElement> articlesMOB = baseFunc.getElements(MOB_ARTICLES);
+        List<ArticleWrapperMOB> articleWrappersMOB = new ArrayList<>();
+
+        Iterables.addAll(articleWrappersMOB,
+                articlesMOB.stream()
+                        .map(webElement -> new ArticleWrapperMOB(baseFunc, webElement))
+                        .collect(Collectors.toList()));
+        return articleWrappersMOB;
+    }
+
+    private ArticleWrapperMOB getArticleByTitle(String searchName) { // private == because we use it only locally here in this class
+        Optional<ArticleWrapperMOB> wrapperMOB = Iterables.tryFind(getAllArticles(),
+                articleWrapperMOB -> articleWrapperMOB.getArticleTitle().contains(searchName)); //name.equals(articleWrapper.getArticleTitle())); // articleWrapper -> articleWrapper.getArticleTitle().contains(name));
+        return wrapperMOB.isPresent() ? wrapperMOB.get() : null;
+    }
+
+
+    public String getArticleTitleNameAS(String searchName) {
+        //LOGGER.info("Get Article Title Name");
+        ArticleWrapperMOB artWrapMOB = getArticleByTitle(searchName);
+
+        return artWrapMOB.getArticleTitle();
+    }
+
+    public int getArticleCommentCountAS(String searchName) {
+        //LOGGER.info("Get Article Comment Count");
+        ArticleWrapperMOB artWrapMOB = getArticleByTitle(searchName);
+
+        return artWrapMOB.getArticleCommentCount();
+    }
+
+
+    public ArticlePageMOB openArticleByTitle(String searchName) {
+        //LOGGER.info("Open Article By Title");
+        ArticleWrapperMOB artWrapMOB = getArticleByTitle(searchName);
+        artWrapMOB.clickOnTitle();
+
         return new ArticlePageMOB(baseFunc);
     }
 
