@@ -18,7 +18,7 @@ public class WrappersTestAS {
     private static final String HOME_PAGE_URL = "http://delfi.lv";
     private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
     //private static final String SEARCH_NAME = "Šveices policija jau vasarā saņēmusi sūdzības par Latvijas pusaudža uzvedību"; //"Riga vs Riga";
-    private static final String SEARCH_NAME = "Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
+    private static final String SEARCH_NAME = "Saūda Arābijā aizturēti"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
 
 
     @Test
