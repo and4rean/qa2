@@ -7,9 +7,7 @@ import cucumber.api.java.en.Then;
 import delfiPageObjectTestAS.Pages.BaseFunctions;
 import delfiPageObjectTestAS.Pages.HomePage;
 import delfiPageObjectTestAS.Pages.HomePageMOB;
-import org.junit.Assert;
 
-import java.math.BigDecimal;
 
 public class DelfiMainPageStepDefsAS {
 
@@ -25,10 +23,12 @@ public class DelfiMainPageStepDefsAS {
     String titleMOB = new String();
     int countMOB;
 
-    //private static final String HOME_PAGE_URL = "http://delfi.lv";      //private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";     //private static /*final*/ String SEARCH_NAME = "Saūda Arābijā aizturēti"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
+    private static final String HOME_PAGE_URL = "http://delfi.lv";
+    private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
+    //private static /*final*/ String SEARCH_NAME = "Saūda Arābijā aizturēti"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
 
     @Before("Driver, Mob Driver load and Homepage, MOB Homepage load (.*)")
-    public void driver__homepage_load(String HOME_PAGE_URL, String MOB_HOME_PAGE_URL) {
+    public void driver__homepage_load(/*String HOME_PAGE_URL, String MOB_HOME_PAGE_URL*/) {
         baseFunc.goToURL(HOME_PAGE_URL);
         baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
     }
