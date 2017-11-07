@@ -27,11 +27,13 @@ public class DelfiMainPageStepDefsAS {
     private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
     //private static /*final*/ String SEARCH_NAME = "Saūda Arābijā aizturēti"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
 
+    /*
     @Before("Driver, Mob Driver load and Homepage, MOB Homepage load (.*)")
-    public void driver__homepage_load(/*String HOME_PAGE_URL, String MOB_HOME_PAGE_URL*/) {
+    public void driver__homepage_load() {
         baseFunc.goToURL(HOME_PAGE_URL);
         baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
     }
+    */
 
     @Given("Search for Title, MOB title and CommentCount, MOB CommentCount (.*)")
     public void title_commentCount_search(String SEARCH_NAME) {
@@ -65,13 +67,13 @@ public class DelfiMainPageStepDefsAS {
     }
 
 
-
-    @After("Quiting deiver and MOB driver  (.*)")
-    public void quit_driver(){
+/*
+    @After("Quiting driver and MOB driver  (.*)")
+    public void quit_drivers(){
         baseFunc.quitDriver();
         baseFuncMOB.quitDriver();
     }
-
+*/
 
 
 }
