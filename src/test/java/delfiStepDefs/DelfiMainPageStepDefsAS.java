@@ -36,15 +36,15 @@ public class DelfiMainPageStepDefsAS {
         baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
     }
 
-/*
+
     @Given("Give search name")
     public void give_search(String SEARCH_BY) {
         this.SEARCH_NAME = SEARCH_BY;
     }
-*/
+
 
     @When("Search for Title and CommentCount (.*)")
-    public void title_search(String SEARCH_NAME) {
+    public void title_search() {
 
         title = homePage.getArticleTitleNameAS(SEARCH_NAME);
         System.out.println("title AS: "+title);
