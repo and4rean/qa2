@@ -36,6 +36,7 @@ public class HomePageStepDefsAS {
     @Then("Temperature are:")
     public void check_temperatures(List<BigDecimal> temperatures){
     }
+
 /*
     @After("Quit driver")
     public void quit_driver(List<BigDecimal> temperatures){
