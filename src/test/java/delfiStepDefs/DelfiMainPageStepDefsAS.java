@@ -8,6 +8,7 @@ import cucumber.api.java.en.When;
 import delfiPageObjectTestAS.Pages.BaseFunctions;
 import delfiPageObjectTestAS.Pages.HomePage;
 import delfiPageObjectTestAS.Pages.HomePageMOB;
+import junit.framework.Assert;
 
 
 public class DelfiMainPageStepDefsAS {
@@ -26,7 +27,7 @@ public class DelfiMainPageStepDefsAS {
 
     private static final String HOME_PAGE_URL = "http://delfi.lv";
     private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
-    private static /*final*/ String SEARCH_NAME = "Saūda Arābijā aizturēti"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
+    private static final String SEARCH_NAME = "Neapturamais Porziņģis"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
 
 
     @Before
@@ -36,15 +37,17 @@ public class DelfiMainPageStepDefsAS {
         baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
     }
 
-
-    @Given("Give search name")
-    public void give_search(String SEARCH_BY) {
-        this.SEARCH_NAME = SEARCH_BY;
+    @Given("Print testik (.*)")
+    public void print_test_annotation(String annotation) {
+        System.out.println(annotation);
     }
 
 
-    @When("Search for Title and CommentCount (.*)")
-    public void title_search() {
+    @Given("^Search for Title (.*)")
+    public void title_search(String SEARCH_BY) throws Throwable {
+
+        //this.SEARCH_NAME = SEARCH_BY;
+        //title = homePage.getArticleTitleNameAS("Neapturamais Porziņģis");   //title = homePage.getArticleTitleNameAS(SEARCH_BY);
 
         title = homePage.getArticleTitleNameAS(SEARCH_NAME);
         System.out.println("title AS: "+title);
@@ -59,18 +62,21 @@ public class DelfiMainPageStepDefsAS {
         System.out.println("MOB count AS: "+countMOB);
     }
 
-    @Then("Comparing (Assert) Title and MOB title (.*)")
-    public void assertion_title_test(String title, String titleMOB) {
 
-        //Assert.assertEquals("Not Equal title and MOB Title", title, titleMOB);
-        //Assert.assertEquals("Not Equal Count and MOB Count", count, countMOB);
+    @Then("^Assert Titles$")
+    public void assert_titles() throws Throwable  {
+
+        title = homePage.getArticleTitleNameAS(SEARCH_NAME);
+        titleMOB = homePageMOB.getArticleTitleNameAS(SEARCH_NAME);
+        Assert.assertEquals("Not Equal Count and MOB Count", title, titleMOB);
     }
 
-    @Then("Comparing (Assert) CommentCount and MOB CommentCount (.*)")
-    public void assertion_count_test(int count, int countMOB) {
+    @Then("^Assert Counts$")
+    public void assert_counts() throws Throwable  {
 
-        //Assert.assertEquals("Not Equal title and MOB Title", title, titleMOB);
-        //Assert.assertEquals("Not Equal Count and MOB Count", count, countMOB);
+        count = homePage.getArticleCommentCountAS(SEARCH_NAME);
+        countMOB = homePageMOB.getArticleCommentCountAS(SEARCH_NAME);
+        Assert.assertEquals("Not Equal Count and MOB Count", count, countMOB);
     }
 
 
