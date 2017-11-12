@@ -19,11 +19,11 @@ public class DelfiMainPageStepDefsAS {
     HomePage homePage = new HomePage(baseFunc);
     HomePageMOB homePageMOB = new HomePageMOB(baseFuncMOB);
 
-    String title = new String();
-    int count;
+    private String title = new String();
+    private int count;
 
-    String titleMOB = new String();
-    int countMOB;
+    private String titleMOB = new String();
+    private int countMOB;
 
     private static final String HOME_PAGE_URL = "http://delfi.lv";
     private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
@@ -71,13 +71,14 @@ public class DelfiMainPageStepDefsAS {
     }
 
 
-    @Then("Assert Counts is Count: (.*)")
-    public void assert_counts() throws Throwable  {
+    @Then("Assert Counts is: (.*)")
+    public void assert_counts(int givenCount) throws Throwable  {
 
         //count = homePage.getArticleCommentCountAS(SEARCH_NAME);
         //countMOB = homePageMOB.getArticleCommentCountAS(SEARCH_NAME);
-        Assert.assertEquals("Not Equal Count and MOB Count", 87, count);
-        Assert.assertEquals("Not Equal Count and MOB Count", 87, countMOB);
+
+        Assert.assertEquals("Not Equal Count and MOB Count", givenCount, count);
+        Assert.assertEquals("Not Equal Count and MOB Count", givenCount, countMOB);
 
         Assert.assertEquals("Not Equal Count and MOB Count", count, countMOB);
     }
