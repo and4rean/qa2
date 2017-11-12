@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 //if model not fully used - so we need "IgnoreProperties"
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WeatherResponse {
+public class WeatherModel {
 
     private Coordinates coord;
 

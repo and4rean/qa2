@@ -1,6 +1,5 @@
 Feature: Testing Delfi mainPageAS
   Scenario: Scenario 1
-    Given Search for Title ("Neapturamais Porziņģis")
-    And   Print testik ("Andruha privet!")
+    Given Given title Rahojs sola33
     Then Assert Titles
     And Assert Counts

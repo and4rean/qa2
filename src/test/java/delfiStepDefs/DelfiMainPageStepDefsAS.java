@@ -28,9 +28,9 @@ public class DelfiMainPageStepDefsAS {
     private static final String HOME_PAGE_URL = "http://delfi.lv";
     private static final String MOB_HOME_PAGE_URL = "http://m.delfi.lv";
 
-    private static final String SEARCH_NAME = "Āboltiņa stāsta par"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
+    private static String SEARCH_NAME; //= "Āboltiņa stāsta par"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
 
-/*
+
     @Before
     //@Before("Drivers load (.*)")
     public void drivers_load() {
@@ -38,17 +38,15 @@ public class DelfiMainPageStepDefsAS {
         baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
     }
 
-    @Given("Print testik (.*)")
-    public void print_test_annotation(String annotation) {
-        System.out.println(annotation);
+
+    @Given("Given title (.*)")
+    public void given_title(String SEARCH_BY) throws Throwable {
+        SEARCH_NAME = SEARCH_BY;
     }
 
 
-    @Given("^Search for Title (.*)")
-    public void title_search(String SEARCH_BY) throws Throwable {
-
-        //this.SEARCH_NAME = SEARCH_BY;
-        //title = homePage.getArticleTitleNameAS("Neapturamais Porziņģis");   //title = homePage.getArticleTitleNameAS(SEARCH_BY);
+    @When("Search for titles and counts")
+    public void title_search() throws Throwable {
 
         title = homePage.getArticleTitleNameAS(SEARCH_NAME);
         System.out.println("title AS: "+title);
@@ -64,20 +62,20 @@ public class DelfiMainPageStepDefsAS {
     }
 
 
-    @Then("^Assert Titles$")
+    @Then("Assert Titles")
     public void assert_titles() throws Throwable  {
 
-        title = homePage.getArticleTitleNameAS(SEARCH_NAME);
-        titleMOB = homePageMOB.getArticleTitleNameAS(SEARCH_NAME);
+        //title = homePage.getArticleTitleNameAS(SEARCH_NAME);
+        //titleMOB = homePageMOB.getArticleTitleNameAS(SEARCH_NAME);
         Assert.assertEquals("Not Equal Count and MOB Count", title, titleMOB);
     }
 
 
-    @Then("^Assert Counts$")
+    @Then("Assert Counts")
     public void assert_counts() throws Throwable  {
 
-        count = homePage.getArticleCommentCountAS(SEARCH_NAME);
-        countMOB = homePageMOB.getArticleCommentCountAS(SEARCH_NAME);
+        //count = homePage.getArticleCommentCountAS(SEARCH_NAME);
+        //countMOB = homePageMOB.getArticleCommentCountAS(SEARCH_NAME);
         Assert.assertEquals("Not Equal Count and MOB Count", count, countMOB);
     }
 
@@ -90,6 +88,6 @@ public class DelfiMainPageStepDefsAS {
         baseFuncMOB.quitDriver();
     }
 
-*/
+
 
 }
