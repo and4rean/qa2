@@ -71,11 +71,14 @@ public class DelfiMainPageStepDefsAS {
     }
 
 
-    @Then("Assert Counts")
+    @Then("Assert Counts is Count: (.*)")
     public void assert_counts() throws Throwable  {
 
         //count = homePage.getArticleCommentCountAS(SEARCH_NAME);
         //countMOB = homePageMOB.getArticleCommentCountAS(SEARCH_NAME);
+        Assert.assertEquals("Not Equal Count and MOB Count", 87, count);
+        Assert.assertEquals("Not Equal Count and MOB Count", 87, countMOB);
+
         Assert.assertEquals("Not Equal Count and MOB Count", count, countMOB);
     }
 
