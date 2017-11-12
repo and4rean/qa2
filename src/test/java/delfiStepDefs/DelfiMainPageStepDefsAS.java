@@ -72,6 +72,7 @@ public class DelfiMainPageStepDefsAS {
         Assert.assertEquals("Not Equal Count and MOB Count", title, titleMOB);
     }
 
+
     @Then("^Assert Counts$")
     public void assert_counts() throws Throwable  {
 
