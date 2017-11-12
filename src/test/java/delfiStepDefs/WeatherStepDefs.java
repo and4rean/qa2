@@ -4,12 +4,17 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import delfiStepDefs.model.WeatherResponse;
+import org.junit.Assert;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 public class WeatherStepDefs {
 
+    private WeatherRequester wRequest = new WeatherRequester();
     private String cityName;
+    private WeatherResponse wResponse = new WeatherResponse();
 
     @Given("City name is (.*)")
     public void setCityName(String name) {
@@ -17,11 +22,16 @@ public class WeatherStepDefs {
     }
 
     @When("Requesting weather information")
-    public void requestWeatherInformation() {
+    public void requestWeatherInformation() throws IOException {
+
+        wResponse = wRequest.getWeather(cityName);
     }
 
-    @Then("Coordinates are lon: (.*) and lat: (.*)")
-    public void checkCoordinates(BigDecimal lon, BigDecimal lat)  throws Throwable {
+    @Then("Then coordinate are Lon: (.*) and Lat: (.*)")
+    public void checkCoordinates(BigDecimal lon, BigDecimal lat) {
+        Assert.assertEquals(lon, wResponse.getCoord().getLon());
+        Assert.assertEquals(lat, wResponse.getCoord().getLat());
+
     }
 
 

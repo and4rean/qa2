@@ -30,7 +30,7 @@ public class DelfiMainPageStepDefsAS {
 
     private static final String SEARCH_NAME = "Āboltiņa stāsta par"; //"Zatlers Šlesera sacīto"; //"Šveices policija"; //"Riga vs Riga";
 
-
+/*
     @Before
     //@Before("Drivers load (.*)")
     public void drivers_load() {
@@ -90,6 +90,6 @@ public class DelfiMainPageStepDefsAS {
         baseFuncMOB.quitDriver();
     }
 
-
+*/
 
 }
