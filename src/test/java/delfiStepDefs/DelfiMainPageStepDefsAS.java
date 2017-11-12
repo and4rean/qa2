@@ -34,13 +34,16 @@ public class DelfiMainPageStepDefsAS {
     @Before
     //@Before("Drivers load (.*)")
     public void drivers_load() {
-        baseFunc.goToURL(HOME_PAGE_URL);
-        baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
+        //baseFunc.goToURL(HOME_PAGE_URL);
+        //baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
     }
 
 
     @Given("Given title (.*)")
     public void given_title(String SEARCH_BY) throws Throwable {
+        baseFunc.goToURL(HOME_PAGE_URL);
+        baseFuncMOB.goToURL(MOB_HOME_PAGE_URL);
+
         SEARCH_NAME = SEARCH_BY;
     }
 
