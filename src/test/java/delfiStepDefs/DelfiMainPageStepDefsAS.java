@@ -13,6 +13,7 @@ import junit.framework.Assert;
 
 public class DelfiMainPageStepDefsAS {
 
+    // /*
     BaseFunctions baseFunc    = new BaseFunctions();
     BaseFunctions baseFuncMOB = new BaseFunctions();
 
@@ -95,6 +96,6 @@ public class DelfiMainPageStepDefsAS {
         baseFuncMOB.quitDriver();
     }
 
-
+    // */
 
 }
