@@ -74,7 +74,7 @@ public class WeatherStepDefs {
     }
 
     @And("name is: (.*)")
-    public void checkDt(String name) {
+    public void checkName(String name) {
         Assert.assertEquals(name, weaModel.getName());
     }
 
