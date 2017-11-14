@@ -3,13 +3,15 @@ package delfiStepDefs.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 
 //if model not fully used - so we need "IgnoreProperties"
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherModel {
 
     private Coordinates coord;
-    //private Weather weather;
+    private List<Weather> weather;
     private String base;
     private String visibility;
     private Wind wind;
@@ -31,12 +33,13 @@ public class WeatherModel {
         this.coord = coord;
     }
 
-/*
-    public Weather getWeather() {
+
+    public List<Weather> getWeather() {
         return weather;
     }
-    public void setWeather(Weather weather) { this.weather = weather; }
-*/
+    public void setWeather(List<Weather> weather) {
+        this.weather = weather;
+    }
 
     public String getBase() {
         return base;

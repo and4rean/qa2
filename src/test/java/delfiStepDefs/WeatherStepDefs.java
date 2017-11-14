@@ -28,56 +28,60 @@ public class WeatherStepDefs {
         weaModel = wReq.getWeather(cityName);
     }
 
-    @Then("Then coordinate are Lon: (.*) and Lat: (.*)")
+    @Then("Coordinate are Lon: (.*) and Lat: (.*)")
     public void checkCoordinates(BigDecimal lon, BigDecimal lat) {
         Assert.assertEquals(lon, weaModel.getCoord().getLon());
         Assert.assertEquals(lat, weaModel.getCoord().getLat());
     }
 
+    @And("Weather details are id: (.*) and main: (.*) and description: (.*) and icon: (.*)")
+    public void checkWeatherDetails(Integer id, String main, String description, String icon) {
+        Assert.assertEquals(id, weaModel.getWeather().get(0).getId());
+        Assert.assertEquals(main, weaModel.getWeather().get(0).getMain());
+        Assert.assertEquals(description, weaModel.getWeather().get(0).getDescription());
+        Assert.assertEquals(icon, weaModel.getWeather().get(0).getIcon());
+    }
 
-    @And("Then base is: (.*)")
+    @And("base is: (.*)")
     public void checkBase(String base) {
         Assert.assertEquals(base, weaModel.getBase());
     }
 
-    @And("Then visibility is: (.*)")
+    @And("visibility is: (.*)")
     public void checkVisibility(String visibility) {
         Assert.assertEquals(visibility, weaModel.getVisibility());
     }
 
-    @And("Then winds details are speed: (.*) and deg: (.*)")
+    @And("Winds details are speed: (.*) and deg: (.*)")
     public void checkWind(BigDecimal speed, Integer deg) {
         Assert.assertEquals(speed, weaModel.getWind().getSpeed());
         Assert.assertEquals(deg, weaModel.getWind().getDeg());
     }
 
-    @And("Then clouds is all: (.*)")
+    @And("Clouds is all: (.*)")
     public void checkClouds(Integer all) {
         Assert.assertEquals(all, weaModel.getClouds().getAll());
     }
 
-
-
-    @And("Then dt is: (.*)")
+    @And("dt is: (.*)")
     public void checkDt(Integer dt) {
         Assert.assertEquals(dt, weaModel.getDt());
     }
 
-    @And("Then id is: (.*)")
+    @And("id is: (.*)")
     public void checkId(Integer id) {
         Assert.assertEquals(id, weaModel.getId());
     }
 
-    @And("Then name is: (.*)")
+    @And("name is: (.*)")
     public void checkDt(String name) {
         Assert.assertEquals(name, weaModel.getName());
     }
 
-    @And("Then cod is: (.*)")
+    @And("cod is: (.*)")
     public void checkCod(Integer cod) {
         Assert.assertEquals(cod, weaModel.getCod());
     }
-
 
 }
 
